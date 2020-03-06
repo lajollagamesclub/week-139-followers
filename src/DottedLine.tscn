@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://DottedLine.gd" type="Script" id=1]
+
+[node name="DottedLine" type="Node2D"]
+position = Vector2( 960, 0 )
+script = ExtResource( 1 )
+line_length = 50.0
+gap_length = 80.0
+width = 10.0
+color = Color( 0.258824, 0.258824, 0.258824, 1 )
