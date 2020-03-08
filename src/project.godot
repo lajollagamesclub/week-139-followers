@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Suitcase",
+"language": "GDScript",
+"path": "res://Suitcase.gd"
+}, {
 "base": "Node2D",
 "class": "TrainCar",
 "language": "GDScript",
 "path": "res://TrainCar.gd"
 } ]
 _global_script_class_icons={
+"Suitcase": "",
 "TrainCar": ""
 }
 
