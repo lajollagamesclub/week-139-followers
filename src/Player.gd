@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name Player
+
 const player_state = preload("res://player_state.tres")
 const middle = 960.0
 const step = 200.0
@@ -12,12 +14,12 @@ var cur_speed := 0.0
 
 func _input(event):
 	if event.is_action_pressed("g_left"):
-		if on_left_side():
+		if on_left_side(target_x_pos):
 			take_down_suitcase()
 		else:
 			target_x_pos -= step
 	elif event.is_action_pressed("g_right"):
-		if not on_left_side():
+		if not on_left_side(target_x_pos):
 			take_down_suitcase()
 		else:
 			target_x_pos += step
@@ -26,7 +28,7 @@ func take_down_suitcase():
 	if cur_speed < 0.40*target_speed: # can only takedown when at speed
 		return
 	cur_speed = target_speed*0.3
-	$SuitcaseTakedown.takedown(on_left_side())
+	$SuitcaseTakedown.takedown(on_left_side(target_x_pos))
 
 func _physics_process(delta):
 	global_position.x = ((target_x_pos - global_position.x) * 25.0 * delta) + global_position.x
@@ -35,5 +37,5 @@ func _physics_process(delta):
 	
 	player_state.move(Vector2(0, -cur_speed)*delta)
 
-func on_left_side() -> bool:
-	return target_x_pos < middle
+static func on_left_side(x_pos: float) -> bool:
+	return x_pos < middle

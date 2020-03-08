@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player.gd"
+}, {
+"base": "Area2D",
 "class": "Suitcase",
 "language": "GDScript",
 "path": "res://Suitcase.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://TrainCar.gd"
 } ]
 _global_script_class_icons={
+"Player": "",
 "Suitcase": "",
 "TrainCar": ""
 }
