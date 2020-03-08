@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://DottedLine.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TrainCar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
+[ext_resource path="res://TrainCarManager.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -10,27 +11,9 @@ extents = Vector2( 32, 32 )
 [node name="Main" type="Node2D"]
 
 [node name="TrainCarManager" type="Node2D" parent="."]
+script = ExtResource( 4 )
 
-[node name="TrainCar" type="Node2D" parent="TrainCarManager"]
-position = Vector2( 960, 0 )
-
-[node name="ColorRect" type="ColorRect" parent="TrainCarManager/TrainCar"]
-margin_left = -400.0
-margin_right = 400.0
-margin_bottom = 1300.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LaneSeparators" type="Node2D" parent="."]
-
-[node name="MiddleLine" parent="LaneSeparators" instance=ExtResource( 2 )]
-
-[node name="RightLine" parent="LaneSeparators" instance=ExtResource( 2 )]
-position = Vector2( 1160, 0 )
-
-[node name="LeftLane" parent="LaneSeparators" instance=ExtResource( 2 )]
-position = Vector2( 760, 0 )
+[node name="TrainCar" parent="TrainCarManager" instance=ExtResource( 2 )]
 
 [node name="Player" type="Area2D" parent="."]
 position = Vector2( 1060, 540 )

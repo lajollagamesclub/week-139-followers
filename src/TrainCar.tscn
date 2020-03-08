@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://DottedLine.gd" type="Script" id=1]
+[ext_resource path="res://TrainCar.gd" type="Script" id=2]
+[ext_resource path="res://DottedLine.tscn" type="PackedScene" id=3]
+[ext_resource path="res://LaneSeparators.gd" type="Script" id=4]
+
+[node name="TrainCar" type="Node2D"]
+position = Vector2( 960, -500 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -400.0
+margin_right = 400.0
+margin_bottom = 1300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LaneSeparators" type="Node2D" parent="."]
+position = Vector2( -960, 0 )
+script = ExtResource( 4 )
+
+[node name="MiddleLine" type="Node2D" parent="LaneSeparators" instance=ExtResource( 3 )]
+position = Vector2( 960, 0 )
+script = ExtResource( 1 )
+line_length = 50.0
+gap_length = 80.0
+total_length = 130.0
+width = 10.0
+color = Color( 0.258824, 0.258824, 0.258824, 1 )
+
+[node name="RightLine" type="Node2D" parent="LaneSeparators" instance=ExtResource( 3 )]
+position = Vector2( 1160, 0 )
+script = ExtResource( 1 )
+line_length = 50.0
+gap_length = 80.0
+total_length = 130.0
+width = 10.0
+color = Color( 0.258824, 0.258824, 0.258824, 1 )
+
+[node name="LeftLane" type="Node2D" parent="LaneSeparators" instance=ExtResource( 3 )]
+position = Vector2( 760, 0 )
+script = ExtResource( 1 )
+line_length = 50.0
+gap_length = 80.0
+total_length = 130.0
+width = 10.0
+color = Color( 0.258824, 0.258824, 0.258824, 1 )
