@@ -13,3 +13,8 @@ func takedown(on_left_side: bool):
 
 func _on_Timer_timeout():
 	$CollisionShape2D.disabled = true
+
+
+func _on_SuitcaseTakedown_area_entered(area: Node2D):
+	if area.is_in_group("suitcases"):
+		area.takedown()

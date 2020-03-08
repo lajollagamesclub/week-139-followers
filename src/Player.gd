@@ -23,13 +23,13 @@ func _input(event):
 			target_x_pos += step
 
 func take_down_suitcase():
-	if cur_speed < 0.70*target_speed: # can only takedown when at speed
+	if cur_speed < 0.40*target_speed: # can only takedown when at speed
 		return
 	cur_speed = target_speed*0.3
 	$SuitcaseTakedown.takedown(on_left_side())
 
 func _physics_process(delta):
-	global_position.x = ((target_x_pos - global_position.x) * 15.0 * delta) + global_position.x
+	global_position.x = ((target_x_pos - global_position.x) * 25.0 * delta) + global_position.x
 	
 	cur_speed = ((target_speed - cur_speed) * 2.5 * delta) + cur_speed
 	
