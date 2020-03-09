@@ -36,6 +36,11 @@ config/name="Week 139 Followers"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameState="*res://GameState.gd"
+BackgroundMusic="*res://BackgroundMusic.tscn"
+
 [display]
 
 window/size/width=1920

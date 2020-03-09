@@ -20,10 +20,17 @@ func _ready():
 func spawn_suitcases(x_offset: float) -> void:
 	var cur_y_pos: float = length - 100.0
 	var cur_suitcase: Suitcase = preload("res://Suitcase.tscn").instance()
+	var last_filled_with_rocks: bool = false
 	while cur_y_pos > cur_suitcase.length + 50.0:
 		add_child(cur_suitcase)
+		if not last_filled_with_rocks and rand_range(0.0, 1.0) < 0.3:
+			cur_suitcase.filled_with_rocks = true
+			cur_suitcase.update_sprite()
+			last_filled_with_rocks = true
+		else:
+			last_filled_with_rocks = false
 		cur_suitcase.position = Vector2(x_offset, cur_y_pos)
-		cur_y_pos -= rand_range(cur_suitcase.length + 30.0, 700.0)
+		cur_y_pos -= rand_range(cur_suitcase.length + 30.0, cur_suitcase.length + 200.0)
 		cur_suitcase = preload("res://Suitcase.tscn").instance()
 	cur_suitcase.free() # loop will quit with an unused node
 

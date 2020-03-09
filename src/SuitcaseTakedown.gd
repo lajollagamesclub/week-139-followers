@@ -1,6 +1,7 @@
 extends Area2D
 
 signal misstakedown
+signal bag_of_rocks
 
 var caught_something := false
 
@@ -25,4 +26,5 @@ func _on_Timer_timeout():
 func _on_SuitcaseTakedown_area_entered(area: Node2D):
 	if area.is_in_group("suitcases"):
 		caught_something = true
-		area.takedown()
+		if not area.if_takedownable_takedown():
+			emit_signal("bag_of_rocks")

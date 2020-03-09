@@ -10,3 +10,9 @@ var target_speed := 700.0
 func move(move_vector: Vector2):
 	emit_signal("moved", -move_vector)
 	pos -= move_vector
+
+func reset():
+	pos = Vector2()
+	x_offset = 0.0
+	y_offset = 0.0
+	target_speed = 700.0
