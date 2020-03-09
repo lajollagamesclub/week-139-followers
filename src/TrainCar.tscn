@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://traincar.png" type="Texture" id=1]
 [ext_resource path="res://TrainCar.gd" type="Script" id=2]
 [ext_resource path="res://DottedLine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://LaneSeparators.gd" type="Script" id=4]
@@ -12,6 +13,7 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_left = -400.0
 margin_right = 400.0
 margin_bottom = 1300.0
@@ -33,3 +35,8 @@ total_length = 130.0
 [node name="LeftLane" parent="LaneSeparators" instance=ExtResource( 3 )]
 position = Vector2( 760, 0 )
 total_length = 130.0
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, 182 )
