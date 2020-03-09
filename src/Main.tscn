@@ -63,5 +63,6 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pursuer"]
 shape = SubResource( 3 )
 [connection signal="area_entered" from="Player/SuitcaseTakedown" to="Player/SuitcaseTakedown" method="_on_SuitcaseTakedown_area_entered"]
+[connection signal="misstakedown" from="Player/SuitcaseTakedown" to="Player" method="_on_SuitcaseTakedown_misstakedown"]
 [connection signal="timeout" from="Player/SuitcaseTakedown/Timer" to="Player/SuitcaseTakedown" method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Pursuer" to="Pursuer" method="_on_Pursuer_area_entered"]
