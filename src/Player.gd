@@ -30,6 +30,8 @@ func _input(event):
 			take_down_suitcase()
 		else:
 			target_x_pos += step
+	elif event.is_action_pressed("g_takedown"):
+		take_down_suitcase()
 
 func take_down_suitcase():
 	if cur_speed < 0.40*player_state.target_speed: # can only takedown when at speed
