@@ -38,9 +38,9 @@ func _on_player_moved(move_vector):
 
 
 func _on_Pursuer_area_entered(area):
-	if area.is_in_group("player"):
-		GameState.caught()
-	elif area.is_in_group("suitcases") and area.taken_down:
+#	if area.is_in_group("player"):
+#		GameState.caught()
+	if area.is_in_group("suitcases") and area.taken_down:
 		if global_position.y > 1200.0: # don't go super far down if down
 			return
 		var random_number: float = rand_range(0.0, 1.0)

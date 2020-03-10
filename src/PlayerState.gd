@@ -6,8 +6,8 @@ var pos: Vector2 = Vector2()
 var x_offset: float = 0.0
 var y_offset: float = 0.0
 var target_speed := 700.0
-var has_gun := false
-var ammo := 0
+var has_gun := true
+var ammo := 16
 
 func move(move_vector: Vector2):
 	emit_signal("moved", -move_vector)
