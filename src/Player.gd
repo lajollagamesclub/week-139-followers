@@ -36,8 +36,8 @@ func _input(event):
 func take_down_suitcase():
 	if cur_speed < 0.40*player_state.target_speed: # can only takedown when at speed
 		return
-	cur_speed = player_state.target_speed*0.65
-	$SuitcaseTakedown.takedown(on_left_side(target_x_pos))
+#	cur_speed = player_state.target_speed*0.65
+	$SuitcaseTakedown.interact(on_left_side(target_x_pos))
 
 func _physics_process(delta):
 	global_position.x = ((target_x_pos - global_position.x) * 25.0 * delta) + global_position.x
@@ -55,9 +55,6 @@ static func on_left_side(x_pos: float) -> bool:
 	return x_pos < middle
 
 
-func _on_SuitcaseTakedown_misstakedown():
-	cur_speed = player_state.target_speed*0.3
-
-
-func _on_SuitcaseTakedown_bag_of_rocks():
-	cur_speed = 0.0
+func _on_SuitcaseTakedown_takedown_slowdown(new_speed_fraction: float):
+	print(new_speed_fraction)
+	cur_speed = player_state.target_speed*new_speed_fraction

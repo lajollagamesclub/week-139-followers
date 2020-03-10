@@ -1,14 +1,13 @@
 extends Area2D
 
-signal misstakedown
-signal bag_of_rocks
+signal takedown_slowdown(new_speed_fraction)
 
 var caught_something := false
 
 func _ready():
 	$CollisionShape2D.disabled = true
 
-func takedown(on_left_side: bool):
+func interact(on_left_side: bool):
 	caught_something = false
 	if on_left_side:
 		position.x = -$CollisionShape2D.shape.extents.x
@@ -20,11 +19,10 @@ func takedown(on_left_side: bool):
 func _on_Timer_timeout():
 	$CollisionShape2D.disabled = true
 	if not caught_something:
-		emit_signal("misstakedown")
+		emit_signal("takedown_slowdown", 0.3)
 
 
 func _on_SuitcaseTakedown_area_entered(area: Node2D):
-	if area.is_in_group("suitcases"):
+	if area.is_in_group("interactable"):
 		caught_something = true
-		if not area.if_takedownable_takedown():
-			emit_signal("bag_of_rocks")
+		emit_signal("takedown_slowdown", area.interact())

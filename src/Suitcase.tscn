@@ -8,6 +8,7 @@
 extents = Vector2( 32.9837, 79.6095 )
 
 [node name="Suitcase" type="Area2D" groups=[
+"interactable",
 "suitcases",
 ]]
 script = ExtResource( 2 )
