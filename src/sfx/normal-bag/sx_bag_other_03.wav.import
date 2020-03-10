@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sx_bag_other_03.wav-bb1dc2a2d59f1d770f124b929f5115fc.sample"
+
+[deps]
+
+source_file="res://sfx/normal-bag/sx_bag_other_03.wav"
+dest_files=[ "res://.import/sx_bag_other_03.wav-bb1dc2a2d59f1d770f124b929f5115fc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
