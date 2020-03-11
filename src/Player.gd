@@ -10,6 +10,7 @@ const step = 200.0
 onready var target_x_pos: float = global_position.x
 
 var cur_speed := 0.0
+var original_y := global_position.y
 
 func _ready():
 	GameState.connect("caught", self, "_on_caught")
@@ -40,7 +41,14 @@ func take_down_suitcase():
 	$SuitcaseTakedown.interact(on_left_side(target_x_pos))
 
 func _physics_process(delta):
+	var movement_offset: Vector2 = Vector2()
+	
+#	if player_state.cur_traincar != null:
+#		movement_offset = player_state.cur_traincar.movement_offset
+	
 	global_position.x = ((target_x_pos - global_position.x) * 25.0 * delta) + global_position.x
+	global_position.x += movement_offset.x
+	global_position.y = original_y + movement_offset.y
 	
 	var smoothing: float = 0.8
 	if GameState.caught:

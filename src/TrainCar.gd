@@ -10,9 +10,11 @@ export var apply_own_stuff := false
 
 var length: float = 1200.0 
 
+var movement_offset: Vector2 = Vector2()
 var base_position: Vector2 = Vector2()
 var time: float = 0.0
 var r_time_scale: Vector2 = Vector2()
+var already_said_i_control_player := false
 
 func _ready():
 	randomize()
@@ -62,10 +64,14 @@ func spawn_suitcases(x_offset: float) -> void:
 
 func _process(delta):
 	time += delta*2.0
-	position = base_position + Vector2(
+	movement_offset = Vector2(
 		sin(time*r_time_scale.x),
 		cos(time*r_time_scale.y)
 	)*15.0
+	position = base_position + movement_offset
+	if position.y >= 0.0 and not already_said_i_control_player:
+		player_state.cur_traincar = self
+		already_said_i_control_player = true
 
 func update_visible_length():
 	$ColorRect.rect_size.y = length
