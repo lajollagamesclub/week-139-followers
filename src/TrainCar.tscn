@@ -8,13 +8,13 @@
 [ext_resource path="res://Train_car_middle.png" type="Texture" id=6]
 [ext_resource path="res://Train_car_back.png" type="Texture" id=7]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 66.7491, 5.04608 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 31.2921, 5.06879 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 33.6151, 4.52158 )
 
 [node name="TrainCar" type="Node2D"]
@@ -77,19 +77,19 @@ collision_layer = 2
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Front/BulletCollidable2"]
 position = Vector2( -330.202, 1197.53 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Front/BulletCollidable2"]
 position = Vector2( 317.565, 1196.05 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Front/BulletCollidable2"]
 position = Vector2( 174.217, 1197.01 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Front/BulletCollidable2"]
 position = Vector2( -176.621, 1198.92 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Front2" type="Sprite" parent="Front"]
 z_index = 1
@@ -113,19 +113,19 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Back/BulletCollidable2"]
 position = Vector2( -295.736, -96.1297 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Back/BulletCollidable2"]
 position = Vector2( -176.719, -96.9037 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Back/BulletCollidable2"]
 position = Vector2( 172.391, -96.9877 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Back/BulletCollidable2"]
 position = Vector2( 295.695, -97.7607 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Back2" type="Sprite" parent="Back"]
 z_index = 2
@@ -134,3 +134,21 @@ centered = false
 offset = Vector2( -99, -63.944 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 199, 39 )
+
+[node name="Back3" type="Sprite" parent="Back"]
+position = Vector2( 0.1548, 0.995148 )
+z_index = 2
+texture = ExtResource( 7 )
+centered = false
+offset = Vector2( -99, -63.944 )
+region_enabled = true
+region_rect = Rect2( 0.113556, 1, 7.62805, 64 )
+
+[node name="Back4" type="Sprite" parent="Back"]
+position = Vector2( 1.12875, -2.46019 )
+z_index = 2
+texture = ExtResource( 7 )
+centered = false
+offset = Vector2( 91.4, -63.369 )
+region_enabled = true
+region_rect = Rect2( 191, -2.08, 8, 64 )

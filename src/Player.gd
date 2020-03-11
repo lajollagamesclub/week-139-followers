@@ -10,7 +10,7 @@ const step = 200.0
 onready var target_x_pos: float = global_position.x
 
 var cur_speed := 0.0
-var original_y := global_position.y
+onready var original_y := global_position.y
 
 func _ready():
 	GameState.connect("caught", self, "_on_caught")
