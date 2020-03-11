@@ -1,18 +1,21 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://traincar.png" type="Texture" id=1]
 [ext_resource path="res://TrainCar.gd" type="Script" id=2]
 [ext_resource path="res://DottedLine.tscn" type="PackedScene" id=3]
 [ext_resource path="res://LaneSeparators.gd" type="Script" id=4]
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 40.5549, 98.0237 )
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 66.7491, 145.35 )
+[ext_resource path="res://Train_car_front.png" type="Texture" id=5]
+[ext_resource path="res://Train_car_middle.png" type="Texture" id=6]
+[ext_resource path="res://Train_car_back.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 31.2921, 145.45 )
+extents = Vector2( 66.7491, 5.04608 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 31.2921, 5.06879 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 33.6151, 4.52158 )
 
 [node name="TrainCar" type="Node2D"]
 position = Vector2( 960, -500 )
@@ -27,7 +30,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MiddleSprite" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
+centered = false
+offset = Vector2( -99, 0 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 199, 50 )
+
 [node name="LaneSeparators" type="Node2D" parent="."]
+visible = false
 position = Vector2( -960, 0 )
 script = ExtResource( 4 )
 
@@ -43,41 +55,82 @@ position = Vector2( 760, 0 )
 total_length = 130.0
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, 182 )
 
-[node name="BulletCollidable" type="Area2D" parent="."]
+[node name="Front" type="Sprite" parent="."]
+position = Vector2( 0, 1300 )
+scale = Vector2( 4, 3.93853 )
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( -99, -26.369 )
+region_enabled = true
+region_rect = Rect2( 0, 45, 199, 27 )
+region_filter_clip = true
+
+[node name="BulletCollidable2" type="Area2D" parent="Front"]
+position = Vector2( 0, -330.073 )
+scale = Vector2( 0.25, 0.253902 )
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletCollidable"]
-position = Vector2( -284.905, 159.774 )
-shape = SubResource( 3 )
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="BulletCollidable"]
-position = Vector2( -313.831, 1309.93 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="BulletCollidable"]
-position = Vector2( 310.609, 1310.9 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="BulletCollidable"]
-position = Vector2( 167.261, 1311.86 )
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Front/BulletCollidable2"]
+position = Vector2( -330.202, 1197.53 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="BulletCollidable"]
-position = Vector2( -162.933, 1311.86 )
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Front/BulletCollidable2"]
+position = Vector2( 317.565, 1196.05 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="BulletCollidable"]
-position = Vector2( -156.457, 159 )
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Front/BulletCollidable2"]
+position = Vector2( 174.217, 1197.01 )
 shape = SubResource( 3 )
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="BulletCollidable"]
-position = Vector2( 156.643, 158.916 )
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Front/BulletCollidable2"]
+position = Vector2( -176.621, 1198.92 )
 shape = SubResource( 3 )
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="BulletCollidable"]
-position = Vector2( 285.091, 158.143 )
-shape = SubResource( 3 )
+[node name="Front2" type="Sprite" parent="Front"]
+z_index = 1
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( -99, -72 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 199, 45 )
+
+[node name="Back" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+centered = false
+offset = Vector2( -99, -24.204 )
+region_enabled = true
+region_rect = Rect2( 0, 38, 199, 51.428 )
+
+[node name="BulletCollidable2" type="Area2D" parent="Back"]
+scale = Vector2( 0.25, 0.25 )
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back/BulletCollidable2"]
+position = Vector2( -295.736, -96.1297 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Back/BulletCollidable2"]
+position = Vector2( -176.719, -96.9037 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Back/BulletCollidable2"]
+position = Vector2( 172.391, -96.9877 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Back/BulletCollidable2"]
+position = Vector2( 295.695, -97.7607 )
+shape = SubResource( 1 )
+
+[node name="Back2" type="Sprite" parent="Back"]
+z_index = 2
+texture = ExtResource( 7 )
+centered = false
+offset = Vector2( -99, -63.944 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 199, 39 )

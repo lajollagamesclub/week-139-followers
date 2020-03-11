@@ -8,6 +8,7 @@ var y_offset: float = 0.0
 var target_speed := 700.0
 var has_gun := true
 var ammo := 16
+var cur_traincar = null
 
 func move(move_vector: Vector2):
 	emit_signal("moved", -move_vector)
