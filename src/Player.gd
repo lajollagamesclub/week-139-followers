@@ -50,6 +50,8 @@ func take_down_suitcase():
 
 func _physics_process(delta):
 	var movement_offset: Vector2 = Vector2()
+	if not GameState.caught:
+		player_state.target_speed = 700.0 + GameState.g_time*5.0
 	
 #	if player_state.cur_traincar != null:
 #		movement_offset = player_state.cur_traincar.movement_offset
