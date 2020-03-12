@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sx_gunshot_05(1).wav-124de2749ec893be51ac5efdd930c020.sample"
+
+[deps]
+
+source_file="res://sfx/gunshot/sx_gunshot_05(1).wav"
+dest_files=[ "res://.import/sx_gunshot_05(1).wav-124de2749ec893be51ac5efdd930c020.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

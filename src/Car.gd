@@ -46,6 +46,7 @@ func hit():
 		else:
 			target_spot.x += 500.0
 			target_rotation += deg2rad(70.0)
+		$RevAway.play()
 		$DeathTimer.start()
 
 
