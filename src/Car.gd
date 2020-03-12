@@ -69,7 +69,7 @@ func _on_DeathTimer_timeout():
 
 
 func _on_ShootTimer_timeout():
-	if $CollisionShape2D.disabled:
+	if $CollisionShape2D.disabled or GameState.caught:
 		return
 	$SpatialGun.shoot(Vector2(player_state.x_offset, player_state.y_offset - 200.0))
 	$ShootTimer.start()

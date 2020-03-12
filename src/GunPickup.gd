@@ -15,4 +15,4 @@ func interact() -> float:
 	player_state.ammo += 8
 	visible = false
 	$PickupSoundEffect.play()
-	return 0.5
+	return 0.7

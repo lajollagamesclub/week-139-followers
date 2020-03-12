@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://rails.png" type="Texture" id=1]
 [ext_resource path="res://TrainCar.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://theme.tres" type="Theme" id=19]
 [ext_resource path="res://ScoreLabel.gd" type="Script" id=20]
 [ext_resource path="res://ScoreInfoManager.gd" type="Script" id=21]
+[ext_resource path="res://AmmoLabel.gd" type="Script" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 107.498 )
@@ -98,7 +99,7 @@ one_shot = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="Pursuer" type="Area2D" parent="." groups=[
@@ -119,7 +120,7 @@ shape = SubResource( 4 )
 modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="CarManager" type="Node2D" parent="."]
@@ -135,10 +136,23 @@ script = ExtResource( 21 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="AmmoLabel" type="Label" parent="UI"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 449.0
+margin_bottom = 117.0
+theme = ExtResource( 19 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Ammo: 00"
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScoreLabel" type="Label" parent="UI"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -303.0
+margin_left = -444.0
 margin_top = 50.0
 margin_right = -50.0
 margin_bottom = 117.0

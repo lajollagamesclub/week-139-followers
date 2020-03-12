@@ -37,6 +37,7 @@ func _input(event):
 		take_down_suitcase()
 	elif player_state.has_gun and player_state.ammo > 0 and event.is_action_pressed("g_shoot"):
 		$Gun.shoot(get_global_mouse_position())
+		player_state.ammo -= 1
 
 func hit():
 	cur_speed = 0.5*cur_speed

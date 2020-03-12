@@ -2,6 +2,7 @@ extends Node2D
 
 const horizontal_margin := 281.0
 const vertical_margin := 270.0
+const player_state = preload("res://player_state.tres")
 #const vertical_spacing := 540.0
 
 var available_car_spots = []
@@ -16,7 +17,7 @@ func _ready():
 
 
 func _on_SpawnCarTimer_timeout():
-	if available_car_spots.size() <= 0:
+	if available_car_spots.size() <= 0 or not player_state.has_gun or GameState.caught:
 		_new_timer_time()
 		return
 	
