@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://rails.png" type="Texture" id=1]
 [ext_resource path="res://TrainCar.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Pursuer.gd" type="Script" id=6]
 [ext_resource path="res://Gun.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Rails.gd" type="Script" id=8]
+[ext_resource path="res://SceneryManager.gd" type="Script" id=9]
 [ext_resource path="res://running-animation/Running5.png" type="Texture" id=10]
 [ext_resource path="res://running-animation/Running1.png" type="Texture" id=11]
 [ext_resource path="res://running-animation/Running4.png" type="Texture" id=12]
@@ -44,6 +45,14 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 181, 270 )
 script = ExtResource( 8 )
+
+[node name="SceneryManager" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="SpawnTimer" type="Timer" parent="SceneryManager"]
+wait_time = 0.5
+one_shot = true
+autostart = true
 
 [node name="TrainCarManager" type="YSort" parent="."]
 script = ExtResource( 4 )
@@ -86,7 +95,7 @@ one_shot = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="Pursuer" type="Area2D" parent="." groups=[
@@ -107,7 +116,6 @@ shape = SubResource( 4 )
 modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-frame = 4
 playing = true
 
 [node name="CarManager" type="Node2D" parent="."]
@@ -117,6 +125,7 @@ script = ExtResource( 18 )
 wait_time = 5.0
 one_shot = true
 autostart = true
+[connection signal="timeout" from="SceneryManager/SpawnTimer" to="SceneryManager" method="_on_SpawnTimer_timeout"]
 [connection signal="area_entered" from="Player/SuitcaseTakedown" to="Player/SuitcaseTakedown" method="_on_SuitcaseTakedown_area_entered"]
 [connection signal="takedown_slowdown" from="Player/SuitcaseTakedown" to="Player" method="_on_SuitcaseTakedown_takedown_slowdown"]
 [connection signal="timeout" from="Player/SuitcaseTakedown/Timer" to="Player/SuitcaseTakedown" method="_on_Timer_timeout"]
