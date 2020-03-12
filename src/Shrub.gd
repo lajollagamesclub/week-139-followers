@@ -1,4 +1,5 @@
 extends Sprite
+
 const player_state = preload("res://player_state.tres")
 
 func _on_player_moved(move_vector: Vector2):

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://CreditsLabel.gd" type="Script" id=2]
+
+[node name="CreditsLabel" type="Label"]
+margin_right = 389.0
+margin_bottom = 131.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0.480469, 0.438356, 0.309677, 1 )
+text = "A Game by La Jolla Games Club"
+align = 1
+autowrap = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

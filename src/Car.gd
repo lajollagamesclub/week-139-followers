@@ -19,7 +19,7 @@ var target_rotation: float = 0.0
 func _ready():
 	randomize()
 	time += rand_range(0.0, 200.0)
-	health = randi()%3 + 1 + int(GameState.g_time)/25
+	health = randi()%3 + 1 + int(GameState.g_time)/50
 	$SpatialGun.excluding.append(self)
 	$SpatialGun.target_group = "player"
 
