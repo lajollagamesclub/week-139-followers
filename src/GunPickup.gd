@@ -8,6 +8,8 @@ func _ready():
 	rotation = rand_range(0.0, 2.0*PI)
 
 func interact() -> float:
+	if not visible:
+		return 1.0
 	player_state.has_gun = true
 	score_info_state.add_score(global_position, 250)
 	player_state.ammo += 8
