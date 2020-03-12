@@ -17,6 +17,7 @@ func update_sprite():
 	if filled_with_rocks:
 		$Sprite.modulate = Color("#00f9ff")
 		$DropPlayer.sound_effect_folder_name = "bag-of-rocks"
+		$DropPlayer.stream = preload("res://sfx/bag-of-rocks/3.wav")
 
 func interact() -> float: # returns new slowdown percentage
 	if taken_down:
