@@ -3,6 +3,7 @@ extends Area2D
 signal dead(what_my_spot_was)
 
 const player_state = preload("res://player_state.tres")
+const score_info_state = preload("res://score_info_state.tres")
 
 var target_spot: Vector2 = Vector2() setget set_target_spot
 
@@ -11,6 +12,7 @@ var my_spot: Vector2 = Vector2()
 var real_pos: Vector2 = Vector2()
 var time := 0.0
 var health := 0
+var dying := false
 
 var target_rotation: float = 0.0
 
@@ -37,8 +39,11 @@ func set_target_spot(new_target_spot):
 	
 
 func hit():
+	if dying:
+		return
 	health -= 1
 	rotation = deg2rad((2.0*float(randi()%2) - 1.0)*30.0)
+	
 	if health <= 0:
 		if target_spot.x < 1080.0/2.0:
 			target_spot.x -= 500.0
@@ -46,8 +51,12 @@ func hit():
 		else:
 			target_spot.x += 500.0
 			target_rotation += deg2rad(70.0)
+		score_info_state.add_score(global_position, 500)
 		$RevAway.play()
 		$DeathTimer.start()
+		dying = true
+	else:
+		score_info_state.add_score(global_position, 50)
 
 
 func _on_DeathTimer_timeout():

@@ -20,6 +20,7 @@ func _ready():
 func _on_caught():
 	set_process_input(false)
 	player_state.target_speed = 0.0
+	$AnimatedSprite.stop()
 
 func _input(event):
 	if event.is_action_pressed("g_left"):

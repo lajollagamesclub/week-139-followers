@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Suitcase
 
+const score_info_state = preload("res://score_info_state.tres")
+
 var length: float = 200.0
 
 var taken_down := false
@@ -21,8 +23,10 @@ func interact() -> float: # returns new slowdown percentage
 		return 1.0
 	if filled_with_rocks:
 		$DropPlayer.play_random()
+		score_info_state.add_score(global_position, -300)
 		return 0.3
 	taken_down = true
+	score_info_state.add_score(global_position, 100)
 	$DropPlayer.play_random()
 	$TakedownTween.interpolate_property(self, "position", position, Vector2(position.x + (2.0*float(Player.on_left_side(global_position.x)) - 1.0)*Player.step + rand_range(-40.0, 40.0), position.y), rand_range(0.3, 0.7), Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$TakedownTween.start()

@@ -5,9 +5,11 @@ signal caught
 const player_state = preload("res://player_state.tres")
 
 var caught := false
+var score := 0
 
 func reset(): # set default parameters
 	caught = false
+	score = 0
 	player_state.reset()
 
 func caught():
