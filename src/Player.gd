@@ -15,6 +15,7 @@ onready var original_y := global_position.y
 func _ready():
 	GameState.connect("caught", self, "_on_caught")
 	cur_speed = player_state.target_speed
+	$Gun.excluding.append(self)
 
 func _on_caught():
 	set_process_input(false)
@@ -33,6 +34,12 @@ func _input(event):
 			target_x_pos += step
 	elif event.is_action_pressed("g_takedown"):
 		take_down_suitcase()
+	elif player_state.has_gun and player_state.ammo > 0 and event.is_action_pressed("g_shoot"):
+		$Gun.shoot(get_global_mouse_position())
+
+func hit():
+	cur_speed = 0.5*cur_speed
+	print("ouch")
 
 func take_down_suitcase():
 	if cur_speed < 0.40*player_state.target_speed: # can only takedown when at speed

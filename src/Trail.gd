@@ -1,11 +1,11 @@
 extends Node2D
 
-export var max_length := 2500.0
+export var max_length := 3000.0
 
 var cur_length: float = 0.0
 
 func _process(delta):
-	cur_length += delta*2500.0*(1.0/0.2)
+	cur_length += delta*2500.0*(1.0/1.0)
 	update()
 	if cur_length >= max_length:
 		cur_length = max_length

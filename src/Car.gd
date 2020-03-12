@@ -1,6 +1,8 @@
-extends Node2D
+extends Area2D
 
 signal dead(what_my_spot_was)
+
+const player_state = preload("res://player_state.tres")
 
 var target_spot: Vector2 = Vector2() setget set_target_spot
 
@@ -16,8 +18,10 @@ func _ready():
 	randomize()
 	time += rand_range(0.0, 200.0)
 	health = randi()%4 + 3
+	$SpatialGun.excluding.append(self)
+	$SpatialGun.target_group = "player"
 
-func _process(delta):
+func _physics_process(delta):
 	time += delta
 	var offset := Vector2(
 		cos(time + sin(time)*2.0),
@@ -46,5 +50,15 @@ func hit():
 
 
 func _on_DeathTimer_timeout():
+	$CollisionShape2D.disabled = true
 	emit_signal("dead", my_spot)
-	queue_free()
+	$DeathTimer.stop()
+	$ShootTimer.stop()
+#	call_deferred("free")
+
+
+func _on_ShootTimer_timeout():
+	if $CollisionShape2D.disabled:
+		return
+	$SpatialGun.shoot(Vector2(player_state.x_offset, player_state.y_offset - 200.0))
+	$ShootTimer.start()
