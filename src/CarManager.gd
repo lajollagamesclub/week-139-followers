@@ -48,5 +48,5 @@ func _on_car_death(open_spot: Vector2):
 	print(available_car_spots)
 
 func _new_timer_time():
-	$SpawnCarTimer.wait_time = rand_range(1.0, 4.0)
+	$SpawnCarTimer.wait_time = rand_range(4.0, 10.0)
 	$SpawnCarTimer.start()

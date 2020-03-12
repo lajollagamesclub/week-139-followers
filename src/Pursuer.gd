@@ -72,4 +72,4 @@ func _on_Pursuer_area_entered(area):
 		if random_number >= 0.3:
 			on_left_side = 1.0 - on_left_side
 			
-		cur_speed = 0.4*target_speed
+		cur_speed = 0.1*target_speed

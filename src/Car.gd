@@ -17,7 +17,7 @@ var target_rotation: float = 0.0
 func _ready():
 	randomize()
 	time += rand_range(0.0, 200.0)
-	health = randi()%4 + 3
+	health = randi()%3 + 1
 	$SpatialGun.excluding.append(self)
 	$SpatialGun.target_group = "player"
 
@@ -54,6 +54,7 @@ func _on_DeathTimer_timeout():
 	emit_signal("dead", my_spot)
 	$DeathTimer.stop()
 	$ShootTimer.stop()
+	$EngineAmbience.stop()
 #	call_deferred("free")
 
 
