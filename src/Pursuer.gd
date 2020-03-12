@@ -23,7 +23,13 @@ func _physics_process(delta):
 	elif player_state.y_offset >= global_position.y:
 		target_speed = -player_state.target_speed*0.5
 	else:
-		target_speed = -player_state.target_speed*1.1
+		if GameState.guy_going_fast:
+			target_speed = -player_state.target_speed*1.1
+		else:
+			if global_position.y > 950.0:
+				target_speed = -player_state.target_speed*1.2
+			else:
+				target_speed = -player_state.target_speed*0.9
 
 	if abs(player_state.y_offset - global_position.y) < 100.0:
 		target_x_pos = player_state.x_offset
@@ -36,8 +42,12 @@ func _physics_process(delta):
 		target_speed = last_target_speed
 		smoothing = last_smoothing
 	
+	if not GameState.guy_going_fast:
+		smoothing = 2.0
+	
 	if GameState.caught:
 		smoothing = 15.0
+	
 	
 	
 	cur_speed = ((target_speed - cur_speed) * smoothing * delta) + cur_speed

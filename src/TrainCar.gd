@@ -40,7 +40,7 @@ func spawn_suitcases(x_offset: float) -> void:
 	var cur_suitcase: Suitcase = preload("res://Suitcase.tscn").instance()
 	var last_filled_with_rocks: bool = false
 	while cur_y_pos > cur_suitcase.length + 100.0:
-		if rand_range(0.0, 1.0) < 0.1: # spawn gun
+		if rand_range(0.0, 1.0) < 0.1 and GameState.spawning_guns: # spawn gun
 			cur_y_pos += cur_suitcase.length - 100.0
 			var cur_gun: Node2D = preload("res://GunPickup.tscn").instance()
 			add_child(cur_gun)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://rails.png" type="Texture" id=1]
 [ext_resource path="res://TrainCar.tscn" type="PackedScene" id=2]
@@ -23,6 +23,9 @@
 [ext_resource path="res://ScoreInfoManager.gd" type="Script" id=21]
 [ext_resource path="res://AmmoLabel.gd" type="Script" id=22]
 [ext_resource path="res://CreditsManager.gd" type="Script" id=23]
+[ext_resource path="res://SkipTutorialButton.gd" type="Script" id=24]
+[ext_resource path="res://TutorialManager.gd" type="Script" id=25]
+[ext_resource path="res://CaughtText.gd" type="Script" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 107.498 )
@@ -100,7 +103,7 @@ one_shot = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-frame = 4
+frame = 5
 playing = true
 
 [node name="Pursuer" type="Area2D" parent="." groups=[
@@ -121,7 +124,7 @@ shape = SubResource( 4 )
 modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="CreditsManager" type="Node2D" parent="."]
@@ -157,6 +160,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="CaughtText" type="Label" parent="UI"]
+anchor_right = 1.0
+margin_left = 465.0
+margin_right = -465.0
+margin_bottom = 355.0
+theme = ExtResource( 19 )
+text = "You Were Caught! Press space to restart"
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScoreLabel" type="Label" parent="UI"]
 anchor_left = 1.0
 anchor_right = 1.0
@@ -172,6 +190,39 @@ script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SkipTutorialButton" type="Button" parent="UI"]
+margin_left = 36.4933
+margin_top = 150.733
+margin_right = 352.493
+margin_bottom = 220.733
+theme = ExtResource( 19 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Skip Tutorial"
+flat = true
+script = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialManager" type="Node2D" parent="."]
+script = ExtResource( 25 )
+
+[node name="UI2" type="CanvasLayer" parent="TutorialManager"]
+
+[node name="Tutorialtext" type="Label" parent="TutorialManager/UI2"]
+anchor_right = 1.0
+margin_left = 465.0
+margin_right = -465.0
+margin_bottom = 355.0
+theme = ExtResource( 19 )
+text = "Agent - You've been compromised!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="SceneryManager/SpawnTimer" to="SceneryManager" method="_on_SpawnTimer_timeout"]
 [connection signal="area_entered" from="Player/SuitcaseTakedown" to="Player/SuitcaseTakedown" method="_on_SuitcaseTakedown_area_entered"]
 [connection signal="takedown_slowdown" from="Player/SuitcaseTakedown" to="Player" method="_on_SuitcaseTakedown_takedown_slowdown"]
@@ -179,3 +230,4 @@ __meta__ = {
 [connection signal="area_entered" from="Pursuer" to="Pursuer" method="_on_Pursuer_area_entered"]
 [connection signal="timeout" from="CreditsManager/SpawnTimer" to="CreditsManager" method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="CarManager/SpawnCarTimer" to="CarManager" method="_on_SpawnCarTimer_timeout"]
+[connection signal="pressed" from="UI/SkipTutorialButton" to="UI/SkipTutorialButton" method="_on_SkipTutorialButton_pressed"]

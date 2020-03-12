@@ -10,6 +10,8 @@ var credits: Array = [
 ]
 
 func _ready():
+	if GameState.tutorial_mode:
+		$SpawnTimer.stop()
 	randomize()
 
 func _on_SpawnTimer_timeout():

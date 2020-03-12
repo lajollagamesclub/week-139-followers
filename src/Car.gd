@@ -51,12 +51,12 @@ func hit():
 		else:
 			target_spot.x += 500.0
 			target_rotation += deg2rad(70.0)
-		score_info_state.add_score(global_position, 500)
+		score_info_state.add_score(global_position, 1000)
 		$RevAway.play()
 		$DeathTimer.start()
 		dying = true
 	else:
-		score_info_state.add_score(global_position, 50)
+		score_info_state.add_score(global_position, 100)
 
 
 func _on_DeathTimer_timeout():
